@@ -1,8 +1,8 @@
 import React from 'react';
-// import Todo from "./components/TodoComponents/Todo";
+import Todo from "./components/TodoComponents/Todo";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm"
-
+import Styled from "styled-components"
 const data = [
   {
     task: 'Grocery Shopping',
@@ -15,7 +15,14 @@ const data = [
     completed: false
   }
 ];
+const TodoStyle = Styled.div`
 
+.task.done{
+text-decoration: line-through;
+}
+
+`
+ 
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -31,7 +38,7 @@ class App extends React.Component {
   }
   toggleDone(taskId) {
     console.log("toggleDone: ", taskId);
-
+ 
   this.setState({
     todo: this.state.todo.map(task => {
       if (task.id === taskId) {
@@ -54,6 +61,7 @@ clearTask = () => {
   });
 };
 
+
 addTask = taskName => {
   console.log("add task: ", taskName);
 
@@ -69,12 +77,14 @@ addTask = taskName => {
   });
 }
   render() {
+    
     console.log("rendering...");
     return (
+      <TodoStyle>
       <div className="App">
         <div className="header">
           <h1>Todo List</h1>
-          <TodoForm addItem={this.addItem} />
+          <TodoForm addTask={this.addTask} />
         </div>
         <TodoList
           todo={this.state.todo}
@@ -83,6 +93,7 @@ addTask = taskName => {
         />
        
       </div>
+      </TodoStyle>
     );
   }
 }
