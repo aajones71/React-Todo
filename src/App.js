@@ -15,10 +15,17 @@ const data = [
     completed: false
   }
 ];
-const TodoStyle = Styled.div`
+const AppStyle = Styled.div`
 
 .task.done{
 text-decoration: line-through;
+} .title{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  margin-left: 500px;
+  margin-right: 500px;
+  background-color: aqua;
 }
 
 `
@@ -80,10 +87,10 @@ addTask = taskName => {
     
     console.log("rendering...");
     return (
-      <TodoStyle>
+      <AppStyle>
       <div className="App">
         <div className="header">
-          <h1>Todo List</h1>
+          <h1 className="title">Todo List</h1>
           <TodoForm addTask={this.addTask} />
         </div>
         <TodoList
@@ -93,7 +100,7 @@ addTask = taskName => {
         />
        
       </div>
-      </TodoStyle>
+      </AppStyle>
     );
   }
 }

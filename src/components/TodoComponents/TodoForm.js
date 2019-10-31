@@ -1,4 +1,11 @@
 import React from "react";
+import Styled from "styled-components"
+
+const Todostyle = Styled.div`
+ display: flex;
+ justify-content: center;
+ 
+`
 
 class TodoForm extends React.Component {
   // Constructor with state
@@ -30,16 +37,22 @@ class TodoForm extends React.Component {
   render() {
     console.log("rendering form");
     return (
-      <form onSubmit={this.handleSubmit}>
+        
+        <form className="shopform" onSubmit={this.handleSubmit}>
         {/* This is an uncontrolled component 😬 We want it to be controlled by state */}
+        <Todostyle>
         <input
           onChange={this.handleChanges}
           type="text"
           name="task"
           value={this.state.taskName}
         />
-        <button>Submit</button>
+        
+        <button className="shopsub">Submit</button>
+        </Todostyle>
       </form>
+      
+      
     );
   }
 }
